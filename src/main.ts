@@ -1,3 +1,7 @@
+import { Tracer } from './tracer';
+// must be started before AppModule import
+Tracer.start('lessons-api');
+
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
