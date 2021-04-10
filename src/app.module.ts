@@ -4,7 +4,7 @@ import { LessonsModule } from './lessons/lessons.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { StudentsModule } from './students/students.module';
 
-const mongoUri = 'mongodb://localhost:27017/lessons';
+const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/lessons';
 
 @Module({
   imports: [
