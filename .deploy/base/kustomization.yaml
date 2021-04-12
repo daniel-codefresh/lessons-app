@@ -7,4 +7,3 @@ resources:
 - mongo-deployment.yaml
 - mongo-service.yaml
 - secrets.yaml
-- docker-secret.yaml
