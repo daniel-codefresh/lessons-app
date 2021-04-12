@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lessons-api-deployment
+  namespace: lessons-app
+  labels:
+    app: lessons-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lessons-api
+  template:
+    metadata:
+      labels:
+        app: lessons-api
+    spec:
+      containers:
+      - name: lessons-api
+        image: danielcodefresh/lessons-app:master
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 9000
+        env:
+        - name: PORT
+          value: '9000'
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: lessons-secrets
+              key: mongo-uri
+      imagePullSecrets:
+       - name: docker-secret
