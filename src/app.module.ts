@@ -9,7 +9,8 @@ const mongoUri = process.env.MONGO_URI || 'mongodb://localhost:27017/lessons';
 @Module({
   imports: [
     GraphQLModule.forRoot({
-      autoSchemaFile: true, // code first approach
+      autoSchemaFile: true, // code first approach,
+      useGlobalPrefix: true,
     }),
     MongooseModule.forRoot(mongoUri),
     LessonsModule,
