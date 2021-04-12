@@ -5,4 +5,5 @@ RUN yarn --pure-lockfile\
     && yarn global add typescript --pure-lockfile
 ADD ./ ./
 RUN yarn build
+EXPOSE 9000
 CMD ["yarn", "start:prod"]

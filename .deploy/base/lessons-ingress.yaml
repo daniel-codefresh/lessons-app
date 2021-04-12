@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: lessons-ingress
+  namespace: lessons-app
+  annotations:
+    kubernetes.io/ingress.class: 'nginx'
+    #nginx.ingress.kubernetes.io/force-ssl-redirect: 'true'
+    nginx.ingress.kubernetes.io/backend-protocol: 'HTTP'
+spec:
+  rules:
+  - host: lessons.com
+    http:
+      paths:
+      - path: /api/
+        backend:
+          serviceName: lessons-api-service
+          servicePort: http
+      - path: /
+        backend:
+          serviceName: lessions-ui-service
+          servicePort: http

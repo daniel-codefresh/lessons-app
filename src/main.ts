@@ -1,6 +1,6 @@
-import { Tracer } from './tracer';
-// must be started before AppModule import
-Tracer.start('lessons-api');
+// import { Tracer } from './tracer';
+// // must be started before AppModule import
+// Tracer.start('lessons-api');
 
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
@@ -12,6 +12,7 @@ async function bootstrap() {
     new ValidationPipe({ whitelist: true, forbidNonWhitelisted: true }),
   );
 
-  await app.listen(3000);
+  const port = parseInt(process.env.PORT) || 9000;
+  await app.listen(port);
 }
 bootstrap();
